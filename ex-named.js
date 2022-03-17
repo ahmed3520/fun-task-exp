@@ -1,18 +1,18 @@
 function printRecords(recordIds) {
   let thing1 = recordIds
-    .map(function (id) {
-      return studentRecords.find(function (stud) {
+    .map(function getStudentFromId(id) {
+      return studentRecords.find(function IdToStudent(stud) {
         return stud.id == id;
       });
     })
-    .sort(function (el1, el2) {
+    .sort(function sortStudentName(el1, el2) {
       if (el1.name > el2.name) {
         return 1;
       } else if (el1.name < el2.name) {
         return -1;
       } else return 0;
     });
-  thing1?.forEach(function (element) {
+  thing1?.forEach(function print(element) {
     console.log(
       `${element.name}(${element.id}): ${
         (element.paid && "paid") || (!element.paid && "not paid")
@@ -22,28 +22,28 @@ function printRecords(recordIds) {
 }
 
 function paidStudentsToEnroll() {
-  let paidAndEnrolled = studentRecords.filter(function (element) {
+  let paidAndEnrolled = studentRecords.filter(function toEnroll(element) {
     return currentEnrollment.includes(element.id) || element.paid;
   });
-  return paidAndEnrolled.map(function (x) {
+  return paidAndEnrolled.map(function stundentListToIds(x) {
     return x.id;
   });
 }
 
 function remindUnpaid(recordIds) {
-  let unpaidStuds = studentRecords.filter(function (x) {
+  let unpaidStuds = studentRecords.filter(function unPaid(x) {
     return recordIds.includes(x.id) && x.paid !== true;
   });
 
   unpaidStuds
-    .sort(function (el1, el2) {
+    .sort(function sortStudentName(el1, el2) {
       if (el1.name > el2.name) {
         return 1;
       } else if (el1.name < el2.name) {
         return -1;
       } else return 0;
     })
-    .forEach(function (element) {
+    .forEach(function print(element) {
       console.log(
         `${element.name}(${element.id}): ${
           (element.paid && "paid") || (!element.paid && "not paid")
